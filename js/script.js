@@ -41,11 +41,21 @@ if (isMobile.any()) {
 		}
 	}
 
+	//выпадение корзины при touch
+	let cartArrow = document.querySelector('.top-bar__shopping-cart_arrow');
+	let shoppingСart = document.querySelector('.top-bar__shopping-cart');
+
+	cartArrow.addEventListener('click', function (e) {
+		shoppingСart.classList.toggle('_active');
+		// console.log(cartArrow)
+	});
+
 } else {
 	document.body.classList.add('_pc')
 }
 
 let menuArrowsHidden = document.getElementsByClassName('_hidden');
+
 
 // ----------------------------------------
 //меню скрытие стрелки, если нет подменю
@@ -53,10 +63,12 @@ let subList = document.querySelectorAll('.menu__sub-list');
 let arrow = document.querySelectorAll('.menu__arrow');
 for (let i = 0; i < subList.length; i++) {
 	let thisItem = subList[i].firstElementChild;
+	// let menuList = subList[i].parentElement;
 	let thisArrow = subList[i].previousElementSibling;
 	const element = subList[i];
 	if (!thisItem) {
 		thisArrow.classList.add('_hidden-arrow')
+		subList[i].style.display = 'none';
 	}
 }
 
@@ -275,6 +287,16 @@ let _slideToggle = (target, duration = 500) => {
 
 // ------------------------------------------
 // Special Product price sale
+
+// let tab1 = document.getElementById('tab_1');
+// let hash = window.location.hash;
+// if (!hash) {
+// 	tab1.style.display = 'block';
+// } else {
+// 	tab1.style.display = 'none';
+// }
+
+
 let blockPrice = document.querySelectorAll('.product-block__price');
 
 for (let i = 0; i < blockPrice.length; i++) {
@@ -443,3 +465,169 @@ leftArrow.onclick = left;
 rightArrow.onclick = right;
 
 setInterval(left, 7000);
+
+
+// ------Pop Up--------------------------
+
+const popupLinks = document.querySelectorAll('.popup-link');
+const body = document.querySelector('body');
+const lockPadding = document.querySelectorAll(".lock-padding");
+
+let unlock = true;
+
+const timeout = 800;
+
+if (popupLinks.length > 0) {
+	for (let index = 0; index < popupLinks.length; index++) {
+		const popupLink = popupLinks[index];
+		popupLink.addEventListener("click", function (e) {
+			const popupName = popupLink.getAttribute('href').replace('#', '');
+			const curentPopup = document.getElementById(popupName);
+			popupOpen(curentPopup);
+			e.preventDefault();
+		});
+	}
+}
+const popupCloseIcon = document.querySelectorAll('.close-popup');
+if (popupCloseIcon.length > 0) {
+	for (let index = 0; index < popupCloseIcon.length; index++) {
+		const el = popupCloseIcon[index];
+		el.addEventListener('click', function (e) {
+			popupClose(el.closest('.popup'));
+			e.preventDefault();
+		});
+	}
+}
+
+function popupOpen(curentPopup) {
+	if (curentPopup && unlock) {
+		const popupActive = document.querySelector('.popup.open');
+		if (popupActive) {
+			popupClose(popupActive, false);
+		} else {
+			bodyLock();
+		}
+		curentPopup.classList.add('open');
+		curentPopup.addEventListener("click", function (e) {
+			if (!e.target.closest('.popup__content')) {
+				popupClose(e.target.closest('.popup'));
+			}
+		});
+	}
+}
+
+function popupClose(popupActive, doUnlock = true) {
+	if (unlock) {
+		popupActive.classList.remove('open');
+		if (doUnlock) {
+			bodyUnLock();
+		}
+	}
+}
+
+function bodyLock() {
+	const lockPaddingValue = window.innerWidth - document.querySelector('.wrapper').offsetWidth + 'px';
+
+	if (lockPadding.length > 0) {
+		for (let index = 0; index < lockPadding.length; index++) {
+			const el = lockPadding[index];
+			el.style.paddingRight = lockPaddingValue;
+		}
+	}
+	body.style.paddingRight = lockPaddingValue;
+	body.classList.add('lock');
+
+	unlock = false;
+	setTimeout(function () {
+		unlock = true;
+	}, timeout);
+}
+
+function bodyUnLock() {
+	setTimeout(function () {
+		if (lockPadding.length > 0) {
+			for (let index = 0; index < lockPadding.length; index++) {
+				const el = lockPadding[index];
+				el.style.paddingRight = '0px';
+			}
+		}
+		body.style.paddingRight = '0px';
+		body.classList.remove('lock');
+	}, timeout);
+
+	unlock = false;
+	setTimeout(function () {
+		unlock = true;
+	}, timeout);
+}
+
+document.addEventListener('keydown', function (e) {
+	if (e.which === 27) {
+		const popupActive = document.querySelector('.popup.open');
+		popupClose(popupActive);
+	}
+});
+
+(function () {
+	// проверяем поддержку
+	if (!Element.prototype.closest) {
+		// реализуем
+		Element.prototype.closest = function (css) {
+			var node = this;
+			while (node) {
+				if (node.matches(css)) return node;
+				else node = node.parentElement;
+			}
+			return null;
+		};
+	}
+})();
+(function () {
+	// проверяем поддержку
+	if (!Element.prototype.matches) {
+		// определяем свойство
+		Element.prototype.matches = Element.prototype.matchesSelector ||
+			Element.prototype.webkitMatchesSelector ||
+			Element.prototype.mozMatchesSelector ||
+			Element.prototype.msMatchesSelector;
+	}
+})();
+
+// -------Gallery product-------------------------
+
+let lookbookImg = document.querySelectorAll('.lookbook__img');
+
+if (lookbookImg.length > 0) {
+	for (let i = 0; i < lookbookImg.length; i++) {
+		let lookbookImages = lookbookImg[i].querySelectorAll('.lookbook__images img');
+		let productPrev = lookbookImg[i].querySelector('.product-prev');
+		let productNext = lookbookImg[i].querySelector('.product-next');
+		let current = 0;
+
+		function slider() {
+			for (let i = 0; i < lookbookImages.length; i++) {
+				lookbookImages[i].classList.add('hidden-img')
+			}
+			lookbookImages[current].classList.remove('hidden-img')
+		}
+		slider();
+		productPrev.onclick = function () {
+			if (current - 1 == -1) {
+				current = lookbookImages.length - 1;
+			} else {
+				current--;
+			}
+			slider();
+		};
+		productNext.onclick = function () {
+
+			if (current + 1 == lookbookImages.length) {
+				current = 0;
+			} else {
+				current++;
+			}
+			slider();
+		};
+	}
+
+}

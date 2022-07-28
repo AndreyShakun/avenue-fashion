@@ -7,6 +7,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Avenue Fashion</title>
 	<link rel="stylesheet" href="style/style.css">
+	<script>
+		let hash = window.location.hash;
+		if (!hash) {
+			window.location.href = '#tab_1';
+			setTimeout(function () {
+				window.scrollTo(0, -500);
+			}, 100);
+		}
+
+	</script>
 </head>
 
 <body>
@@ -14,7 +24,7 @@
 		<header class="header">
 
 			<!-- top bar -->
-			<div class="top-bar">
+			<div class="top-bar lock-padding">
 				<div class="top-bar__body _container1170">
 					<div class="top-bar__currency">
 						<div class="top-bar__currency_select">
@@ -30,13 +40,100 @@
 					</div>
 					<div class="top-bar__user-bar">
 						<div class="top-bar__account">
-							<div class="top-bar__account_register"><a href="">Register</a></div>
-							<div class="top-bar__account_sing-in"><a href="">Sing in</a></div>
+							<div class="top-bar__account_register"><a href="#popupregister" class="popup-link">Register</a>
+							</div>
+							<div class="top-bar__account_sing-in"><a href="#popupsingin" class="popup-link">Sing in</a></div>
 						</div>
 						<div class="top-bar__shopping-cart">
 							<div class="top-bar__shopping-cart_text icon-cart">empty
 								<span class="top-bar__shopping-cart_arrow icon-arrow-down"></span>
 							</div>
+							<div class="view-cart">
+								<div class="cart-product">
+									<div class="cart-product__img">
+										<a href="">
+											<img src="/img/products/product-7.png" alt="sweatshirt">
+										</a>
+									</div>
+									<div class="cart-product__title">
+										<a href="">Ave classic sweatshirt</a>
+									</div>
+									<div class="cart-product__quantity">
+										<input type="number" name="" id="" size="2" placeholder="1" min="1">
+									</div>
+									<div class="cart-product__price">89.99</div>
+									<div class="cart-product__sum">89.99</div>
+									<div class="cart-product__remove">
+										<button type="button"></button>
+									</div>
+								</div>
+								<div class="cart-product">
+									<div class="cart-product__img">
+										<a href="">
+											<img src="/img/products/product-6.png" alt="sweatshirt">
+										</a>
+									</div>
+									<div class="cart-product__title">
+										<a href="">Ave classic sweatshirt</a>
+									</div>
+									<div class="cart-product__quantity">
+										<input type="number" name="" id="" size="2" placeholder="1" min="1">
+									</div>
+									<div class="cart-product__price">89.99</div>
+									<div class="cart-product__sum">89.99</div>
+									<div class="cart-product__remove">
+										<button type="button"></button>
+									</div>
+								</div>
+								<div class="cart-product__total">
+									<div>Total</div>
+									<div class="icon-gbp">178.98</div>
+								</div>
+								<div class="cart-product__checkout">
+									<div>
+										<a href="">checkout</a>
+									</div>
+									<div>
+										<a href="">recalculate the cart</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- pop up -->
+			<div id="popupsingin" class="popup">
+				<div class="popup__body">
+					<div class="popup__content">
+						<a href="#top-bar" class="popup__close close-popup">x</a>
+						<div class="popup__title">sing in</div>
+						<div class="popup__text">
+							<form action="" method="post" class="singin__form">
+								<input type="text" placeholder="Email Adress" class="singin__input">
+								<input type="password" placeholder="Password" class="singin__input">
+								<a href="" class="singin__forgot">forgot password</a>
+								<button type="submit" class="singin__submit">Sing In</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="popupregister" class="popup">
+				<div class="popup__body">
+					<div class="popup__content">
+						<a href="#top-bar" class="popup__close close-popup">x</a>
+						<div class="popup__title">register</div>
+						<div class="popup__text">
+							<form action="" method="post" class="singin__form">
+								<input type="text" placeholder="Name" class="singin__input">
+								<input type="text" placeholder="Email Adress" class="singin__input">
+								<input type="password" placeholder="Password" class="singin__input">
+								<input type="password" placeholder="Confirm Password" class="singin__input">
+								<button type="submit" class="singin__submit">Register</button>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -189,7 +286,7 @@
 			<div class="header-slider">
 				<div class="header-slider__list items" id="items">
 					<div class="items__slide">
-						<img class="slide__img _ibg" src="https://andreyshakun.github.io/avenue-fashion/img/header-slider/slide-1.png" alt="mens">
+						<img class="slide__img _ibg" src="/img/header-slider/slide-1.png" alt="mens">
 						<div class="slide__title">ave</div>
 						<div class="slide__text"></div>
 						<div class="slide__button">
@@ -197,7 +294,7 @@
 						</div>
 					</div>
 					<div class="items__slide">
-						<img class="slide__img _ibg" src="https://andreyshakun.github.io/avenue-fashion/img/header-slider/slide-2.png" alt="womens">
+						<img class="slide__img _ibg" src="/img/header-slider/slide-2.png" alt="womens">
 						<div class="slide__title">ave</div>
 						<div class="slide__text"></div>
 						<div class="slide__button">
@@ -205,7 +302,7 @@
 						</div>
 					</div>
 					<div class="items__slide">
-						<img class="slide__img _ibg" src="https://andreyshakun.github.io/avenue-fashion/img/header-slider/slide-3.png" alt="look">
+						<img class="slide__img _ibg" src="/img/header-slider/slide-3.png" alt="look">
 						<div class="slide__title">ave</div>
 						<div class="slide__text"></div>
 						<div class="slide__button">
@@ -231,7 +328,7 @@
 						<a href="#tab_5" class="tabs__item">coming soon</a>
 					</nav>
 					<!-- TAB 1 -->
-					<div class="tabs__block" id="tab_1" target="taget">
+					<div class="tabs__block" id="tab_1">
 						<div class="tabs__body tab">
 							<!-- product 1 -->
 							<div class="tab__block-product product-block ">
@@ -240,22 +337,22 @@
 										<!-- Thumb 1 -->
 										<input type="radio" checked name="product1" id="box1_1">
 										<label for="box1_1">
-											<img class="product-block__label" src="https://andreyshakun.github.io/avenue-fashion/img/products/product-1.png" alt="T-Shirts">
+											<img class="product-block__label" src="/img/products/product-1.png" alt="T-Shirts">
 										</label>
-										<img src="https://andreyshakun.github.io/avenue-fashion/img/products/product-1.png" alt="T-Shirts">
+										<img src="/img/products/product-1.png" alt="T-Shirts">
 										<!-- Thumb 2 -->
 										<input type="radio" name="product1" id="box1_2">
 										<label for="box1_2">
-											<img class="product-block__label" src="https://andreyshakun.github.io/avenue-fashion/img/products/product-2.png" alt="T-Shirts">
+											<img class="product-block__label" src="/img/products/product-2.png" alt="T-Shirts">
 										</label>
-										<img src="https://andreyshakun.github.io/avenue-fashion/img/products/product-2.png" alt="T-Shirts">
+										<img src="/img/products/product-2.png" alt="T-Shirts">
 										<!-- Thumb 3 -->
 										<input type="radio" name="product1" id="box1_3">
 										<label for="box1_3">
-											<img class="product-block__label" src="https://andreyshakun.github.io/avenue-fashion/img/products/product-5 thumb-back.png"
+											<img class="product-block__label" src="/img/products/product-5 thumb-back.png"
 												alt="T-Shirts">
 										</label>
-										<img src="https://andreyshakun.github.io/avenue-fashion/img/products/product-5.png" alt="T-Shirts">
+										<img src="/img/products/product-5.png" alt="T-Shirts">
 									</div>
 								</div>
 								<div class="product-block__price">
@@ -288,22 +385,22 @@
 										<!-- Thumb 1 -->
 										<input type="radio" checked name="product2" id="box2_1">
 										<label for="box2_1">
-											<img class="product-block__label" src="https://andreyshakun.github.io/avenue-fashion/img/products/product-2.png" alt="T-Shirts">
+											<img class="product-block__label" src="/img/products/product-2.png" alt="T-Shirts">
 										</label>
-										<img src="https://andreyshakun.github.io/avenue-fashion/img/products/product-2.png" alt="T-Shirts">
+										<img src="/img/products/product-2.png" alt="T-Shirts">
 										<!-- Thumb 2 -->
 										<input type="radio" name="product2" id="box2_2">
 										<label for="box2_2">
-											<img class="product-block__label" src="https://andreyshakun.github.io/avenue-fashion/img/products/product-3.png" alt="T-Shirts">
+											<img class="product-block__label" src="/img/products/product-3.png" alt="T-Shirts">
 										</label>
-										<img src="https://andreyshakun.github.io/avenue-fashion/img/products/product-3.png" alt="T-Shirts">
+										<img src="/img/products/product-3.png" alt="T-Shirts">
 										<!-- Thumb 3 -->
 										<input type="radio" name="product2" id="box2_3">
 										<label for="box2_3">
-											<img class="product-block__label" src="https://andreyshakun.github.io/avenue-fashion/img/products/product-5 thumb-back.png"
+											<img class="product-block__label" src="/img/products/product-5 thumb-back.png"
 												alt="T-Shirts">
 										</label>
-										<img src="https://andreyshakun.github.io/avenue-fashion/img/products/product-5.png" alt="T-Shirts">
+										<img src="/img/products/product-5.png" alt="T-Shirts">
 									</div>
 								</div>
 								<div class="product-block__price">
@@ -336,22 +433,22 @@
 										<!-- Thumb 1 -->
 										<input type="radio" checked name="product3" id="box3_1">
 										<label for="box3_1">
-											<img class="product-block__label" src="https://andreyshakun.github.io/avenue-fashion/img/products/product-3.png" alt="T-Shirts">
+											<img class="product-block__label" src="/img/products/product-3.png" alt="T-Shirts">
 										</label>
-										<img src="https://andreyshakun.github.io/avenue-fashion/img/products/product-3.png" alt="T-Shirts">
+										<img src="/img/products/product-3.png" alt="T-Shirts">
 										<!-- Thumb 2 -->
 										<input type="radio" name="product3" id="box3_2">
 										<label for="box3_2">
-											<img class="product-block__label" src="https://andreyshakun.github.io/avenue-fashion/img/products/product-2.png" alt="T-Shirts">
+											<img class="product-block__label" src="/img/products/product-2.png" alt="T-Shirts">
 										</label>
-										<img src="https://andreyshakun.github.io/avenue-fashion/img/products/product-2.png" alt="T-Shirts">
+										<img src="/img/products/product-2.png" alt="T-Shirts">
 										<!-- Thumb 3 -->
 										<input type="radio" name="product3" id="box3_3">
 										<label for="box3_3">
-											<img class="product-block__label" src="https://andreyshakun.github.io/avenue-fashion/img/products/product-5 thumb-back.png"
+											<img class="product-block__label" src="/img/products/product-5 thumb-back.png"
 												alt="T-Shirts">
 										</label>
-										<img src="https://andreyshakun.github.io/avenue-fashion/img/products/product-5.png" alt="T-Shirts">
+										<img src="/img/products/product-5.png" alt="T-Shirts">
 									</div>
 								</div>
 								<div class="product-block__price">
@@ -384,22 +481,22 @@
 										<!-- Thumb 1 -->
 										<input type="radio" checked name="product4" id="box4_1">
 										<label for="box4_1">
-											<img class="product-block__label" src="https://andreyshakun.github.io/avenue-fashion/img/products/product-4.png" alt="T-Shirts">
+											<img class="product-block__label" src="/img/products/product-4.png" alt="T-Shirts">
 										</label>
-										<img src="https://andreyshakun.github.io/avenue-fashion/img/products/product-4.png" alt="T-Shirts">
+										<img src="/img/products/product-4.png" alt="T-Shirts">
 										<!-- Thumb 2 -->
 										<input type="radio" name="product4" id="box4_2">
 										<label for="box4_2">
-											<img class="product-block__label" src="https://andreyshakun.github.io/avenue-fashion/img/products/product-2.png" alt="T-Shirts">
+											<img class="product-block__label" src="/img/products/product-2.png" alt="T-Shirts">
 										</label>
-										<img src="https://andreyshakun.github.io/avenue-fashion/img/products/product-2.png" alt="T-Shirts">
+										<img src="/img/products/product-2.png" alt="T-Shirts">
 										<!-- Thumb 3 -->
 										<input type="radio" name="product4" id="box4_3">
 										<label for="box4_3">
-											<img class="product-block__label" src="https://andreyshakun.github.io/avenue-fashion/img/products/product-5 thumb-back.png"
+											<img class="product-block__label" src="/img/products/product-5 thumb-back.png"
 												alt="T-Shirts">
 										</label>
-										<img src="https://andreyshakun.github.io/avenue-fashion/img/products/product-5.png" alt="T-Shirts">
+										<img src="/img/products/product-5.png" alt="T-Shirts">
 									</div>
 								</div>
 								<div class="product-block__price">
@@ -432,22 +529,22 @@
 										<!-- Thumb 1 -->
 										<input type="radio" checked name="product5" id="box5_1">
 										<label for="box5_1">
-											<img class="product-block__label" src="https://andreyshakun.github.io/avenue-fashion/img/products/product-5.png" alt="T-Shirts">
+											<img class="product-block__label" src="/img/products/product-5.png" alt="T-Shirts">
 										</label>
-										<img src="https://andreyshakun.github.io/avenue-fashion/img/products/product-5.png" alt="T-Shirts">
+										<img src="/img/products/product-5.png" alt="T-Shirts">
 										<!-- Thumb 2 -->
 										<input type="radio" name="product5" id="box5_2">
 										<label for="box5_2">
-											<img class="product-block__label" src="https://andreyshakun.github.io/avenue-fashion/img/products/product-2.png" alt="T-Shirts">
+											<img class="product-block__label" src="/img/products/product-2.png" alt="T-Shirts">
 										</label>
-										<img src="https://andreyshakun.github.io/avenue-fashion/img/products/product-2.png" alt="T-Shirts">
+										<img src="/img/products/product-2.png" alt="T-Shirts">
 										<!-- Thumb 3 -->
 										<input type="radio" name="product5" id="box5_3">
 										<label for="box5_3">
-											<img class="product-block__label" src="https://andreyshakun.github.io/avenue-fashion/img/products/product-5 thumb-back.png"
+											<img class="product-block__label" src="/img/products/product-5 thumb-back.png"
 												alt="T-Shirts">
 										</label>
-										<img src="https://andreyshakun.github.io/avenue-fashion/img/products/product-5.png" alt="T-Shirts">
+										<img src="/img/products/product-5.png" alt="T-Shirts">
 									</div>
 								</div>
 								<div class="product-block__price">
@@ -480,22 +577,22 @@
 										<!-- Thumb 1 -->
 										<input type="radio" checked name="product6" id="box6_1">
 										<label for="box6_1">
-											<img class="product-block__label" src="https://andreyshakun.github.io/avenue-fashion/img/products/product-6.png" alt="T-Shirts">
+											<img class="product-block__label" src="/img/products/product-6.png" alt="T-Shirts">
 										</label>
-										<img src="https://andreyshakun.github.io/avenue-fashion/img/products/product-6.png" alt="T-Shirts">
+										<img src="/img/products/product-6.png" alt="T-Shirts">
 										<!-- Thumb 2 -->
 										<input type="radio" name="product6" id="box6_2">
 										<label for="box6_2">
-											<img class="product-block__label" src="https://andreyshakun.github.io/avenue-fashion/img/products/product-2.png" alt="T-Shirts">
+											<img class="product-block__label" src="/img/products/product-2.png" alt="T-Shirts">
 										</label>
-										<img src="https://andreyshakun.github.io/avenue-fashion/img/products/product-2.png" alt="T-Shirts">
+										<img src="/img/products/product-2.png" alt="T-Shirts">
 										<!-- Thumb 3 -->
 										<input type="radio" name="product6" id="box6_3">
 										<label for="box6_3">
-											<img class="product-block__label" src="https://andreyshakun.github.io/avenue-fashion/img/products/product-5 thumb-back.png"
+											<img class="product-block__label" src="/img/products/product-5 thumb-back.png"
 												alt="T-Shirts">
 										</label>
-										<img src="https://andreyshakun.github.io/avenue-fashion/img/products/product-5.png" alt="T-Shirts">
+										<img src="/img/products/product-5.png" alt="T-Shirts">
 									</div>
 								</div>
 								<div class="product-block__price">
@@ -525,18 +622,23 @@
 					</div>
 					<!-- TAB 2 -->
 					<div class="tabs__block" id="tab_2">
+						<br /><br /><br /><br />
 						<p>NEW ARRIVALS. There are no products in this section</p>
 					</div>
 					<!-- TAB 3 -->
 					<div class="tabs__block" id="tab_3">
+						<br /><br /><br /><br />
 						<p>BEST SELLERS. There are no products in this section</p>
+
 					</div>
 					<!-- TAB 4 -->
 					<div class="tabs__block" id="tab_4">
+						<br /><br /><br /><br />
 						<p>SPECIAL OFFERS. There are no products in this section</p>
 					</div>
 					<!-- TAB 5 -->
 					<div class="tabs__block" id="tab_5">
+						<br /><br /><br /><br />
 						<p>COMING SOON. There are no products in this section</p>
 					</div>
 				</div>
@@ -548,7 +650,15 @@
 					<div class="lookbook__body">
 						<div class="lookbook__block">
 							<div class="lookbook__img">
-								<img src="https://andreyshakun.github.io/avenue-fashion/img/lookbook/lookbook-mens.png" alt="">
+								<div class="lookbook__images">
+									<img src="/img/lookbook/lookbook-mens.png" alt="lookbook">
+									<img src="/img/products/product-1.png" alt="lookbook">
+									<img src="/img/products/product-3.png" alt="lookbook">
+								</div>
+								<div class="product__arrows">
+									<span class="product-prev"></span>
+									<span class="product-next"></span>
+								</div>
 							</div>
 							<div class="lookbook__info">
 								<div class="lookbook__title">
@@ -566,7 +676,16 @@
 						</div>
 						<div class="lookbook__block">
 							<div class="lookbook__img">
-								<img src="https://andreyshakun.github.io/avenue-fashion/img/lookbook/lookbook-womens.png" alt="">
+								<div class="lookbook__images">
+									<img src="/img/lookbook/lookbook-womens.png" alt="lookbook">
+									<img src="/img/products/product-2.png" alt="lookbook">
+									<img src="/img/products/product-5.png" alt="lookbook">
+									<img src="/img/products/product-6.png" alt="lookbook">
+								</div>
+								<div class="product__arrows">
+									<span class="product-prev"></span>
+									<span class="product-next"></span>
+								</div>
 							</div>
 							<div class="lookbook__info">
 								<div class="lookbook__title">
@@ -584,7 +703,13 @@
 						</div>
 						<div class="lookbook__block">
 							<div class="lookbook__img">
-								<img src="https://andreyshakun.github.io/avenue-fashion/img/lookbook/lookbook-your.png" alt="">
+								<div class="lookbook__images">
+									<img src="/img/lookbook/lookbook-your.png" alt="lookbook">
+								</div>
+								<div class="product__arrows">
+									<span class="product-prev"></span>
+									<span class="product-next"></span>
+								</div>
 							</div>
 							<div class="lookbook__info">
 								<div class="lookbook__title">
@@ -767,7 +892,7 @@
 
 		</footer>
 	</div>
-	<script src="https://andreyshakun.github.io/avenue-fashion/js/script.js"></script>
+	<script src="js/script.js"></script>
 </body>
 
 </html>
